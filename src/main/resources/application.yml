@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active:
+      - local
+#    group:
+#      local:
+#      prod:
+#    include:
+#      - db
+#      - my-service
+#      - site
