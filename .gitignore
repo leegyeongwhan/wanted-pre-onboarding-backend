@@ -37,3 +37,5 @@ out/
 .vscode/
 /src/main/resources/applicaiton_local.yml
 /src/main/resources/applicaiton_prod.yml
+/src/main/resources/applicaiton-local.yml
+/src/main/resources/applicaiton-prod.yml
