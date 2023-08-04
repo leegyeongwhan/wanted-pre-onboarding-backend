@@ -27,4 +27,8 @@ public class Member {
         this.email = email;
         this.password = password;
     }
+
+    public void updateToken(MemberToken memberToken) {
+        this.memberToken = memberToken;
+    }
 }

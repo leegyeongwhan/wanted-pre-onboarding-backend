@@ -2,6 +2,7 @@ package onboarding.service;
 
 import lombok.extern.slf4j.Slf4j;
 import onboarding.controller.LoginResponse;
+import onboarding.domain.MemberToken;
 import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,8 @@ import onboarding.domain.Member;
 import onboarding.exception.DuplicateEmailException;
 import onboarding.exception.EmailNotFoundException;
 import onboarding.repository.MemberRepository;
+import onboarding.repository.MemberTokenRepository;
+import onboarding.security.JwtProvider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final MemberTokenRepository memberTokenRepository;
     private final BCryptPasswordEncoder encoder;
+    private final JwtProvider jwtProvider;
 
     @Transactional
     public Long signup(SignUpRequest signUpRequest) {
@@ -37,10 +42,13 @@ public class MemberService {
     @Transactional
     public LoginResponse login(LoginRequest loginRequest) {
         Member member = memberRepository.findByEmail(loginRequest.getEmail()).orElseThrow(EmailNotFoundException::new);
-        if (member.getPassword().equals(loginRequest.getPassword())) {
-
+        if (!encoder.matches(loginRequest.getPassword(), member.getPassword())) {
+            throw new NotAcceptPassword("비밀번호가 틀립니다");
         }
-        throw new NotAcceptPassword("비밀번호가 틀립니다");
+        String token = jwtProvider.createToken(member.getId());
+        MemberToken memberToken = memberTokenRepository.save(new MemberToken(token));
+        member.updateToken(memberToken);
+        return LoginResponse.of(memberToken.getJwtToken());
     }
 
     public Member findMemberById(long memberId) {

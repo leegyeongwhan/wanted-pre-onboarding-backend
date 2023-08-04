@@ -1,11 +1,13 @@
 package onboarding.domain;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberToken {
 
@@ -15,4 +17,8 @@ public class MemberToken {
     private Long id;
 
     private String jwtToken;
+
+    public MemberToken(String jwtToken) {
+        this.jwtToken = jwtToken;
+    }
 }
