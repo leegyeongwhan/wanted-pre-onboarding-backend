@@ -10,9 +10,14 @@ import javax.validation.constraints.Size;
 public class LoginRequest {
     @Email
     @NotNull(message = "Email cannot be null")
-    private String email;
+    private final String email;
 
     @NotNull(message = "Password cannot be null")
     @Size(min = 8, message = "Password must be at least 8 characters long")
-    private String password;
+    private final String password;
+
+    public LoginRequest(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

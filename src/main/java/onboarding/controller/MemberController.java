@@ -24,8 +24,7 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Void> login(final @Valid @RequestBody LoginRequest loginRequest) {
-        memberService.login(loginRequest);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<LoginResponse> login(final @Valid @RequestBody LoginRequest loginRequest) {
+        return ResponseEntity.ok().body(memberService.login(loginRequest));
     }
 }
