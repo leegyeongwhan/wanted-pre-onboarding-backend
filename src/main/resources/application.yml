@@ -17,7 +17,7 @@ spring:
       on-profile: local
 logging.level:
   org.hibernate.SQL: debug
-
+JWT_SECRET_KEY: fsdfsdjfiowejfewoifjewioifowe
 ---
 spring:
   datasource:

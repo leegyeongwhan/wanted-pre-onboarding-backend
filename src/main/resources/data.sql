@@ -9,7 +9,7 @@ create table member
 (
     member_id       bigint auto_increment primary key,
     email           varchar(128) not null UNIQUE,
-    password_id     varchar(128) not null,
+    password     varchar(128) not null,
     member_token_id bigint null,
     constraint fk_member_token
         foreign key (member_token_id) references member_token (member_token_id)
