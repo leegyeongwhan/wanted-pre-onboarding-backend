@@ -1,14 +1,12 @@
 package onboarding.controller;
 
+import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import onboarding.service.MemberService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -21,13 +19,13 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> signup(final @Valid @RequestBody SignUpRequest signUpRequest) {
-        memberService.signup(signUpRequest);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Long> signup(final @Valid @RequestBody SignUpRequest signUpRequest) {
+        return ResponseEntity.ok().body(memberService.signup(signUpRequest));
     }
 
-//    @GetMapping("/login")
-//    public void join() {
-//
-//    }
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(final @Valid @RequestBody LoginRequest loginRequest) {
+        memberService.login(loginRequest);
+        return ResponseEntity.ok().build();
+    }
 }
