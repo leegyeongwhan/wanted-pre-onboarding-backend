@@ -1,10 +1,8 @@
 package onboarding.service;
 
 import onboarding.domain.Member;
-import onboarding.domain.Password;
 import onboarding.dto.request.SignUpRequest;
 import onboarding.repository.MemberRepository;
-import onboarding.repository.PasswordRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,8 +24,6 @@ class MemberServiceTest {
     @Mock
     private MemberRepository memberRepository;
     @Mock
-    private PasswordRepository passwordRepository;
-    @Mock
     private BCryptPasswordEncoder encoder;
 
     @InjectMocks
@@ -38,14 +34,12 @@ class MemberServiceTest {
     void test_signup() {
         //given
         SignUpRequest signUpRequest = new SignUpRequest("example123@naver.com", "password123");
-        Password password = new Password("encodedPassword");
-        Member member = new Member(signUpRequest.getEmail(), password);
+        Member member = new Member(signUpRequest.getEmail(), signUpRequest.getPassword());
 
         Long fakeMemberId = 1L;
         ReflectionTestUtils.setField(member, "id", fakeMemberId);
 
         given(encoder.encode(signUpRequest.getPassword())).willReturn("encodedPassword");
-        given(passwordRepository.save(any())).willReturn(password);
         given(memberRepository.save(any())).willReturn(member);
         given(memberRepository.findById(fakeMemberId)).willReturn(Optional.of(member));
         //when

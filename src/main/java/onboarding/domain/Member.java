@@ -3,10 +3,8 @@ package onboarding.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import onboarding.dto.request.SignUpRequest;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -19,15 +17,13 @@ public class Member {
     private long id;
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "password_id")
-    private Password password;
+    private String password;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_token_id")
     private MemberToken memberToken;
 
-    public Member(String email, Password password) {
+    public Member(String email, String password) {
         this.email = email;
         this.password = password;
     }
