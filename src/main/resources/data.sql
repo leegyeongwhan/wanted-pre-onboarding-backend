@@ -15,7 +15,7 @@ create table member
 (
     member_id       bigint auto_increment primary key,
     email           varchar(128) not null UNIQUE,
-    password_id     bigint        null,
+    password_id     bigint       not null,
     member_token_id bigint        null,
     constraint fk_password
         foreign key (password_id) references password (password_id),

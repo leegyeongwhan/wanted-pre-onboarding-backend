@@ -28,12 +28,12 @@
 # 구현 방법 & 이유
 # API 명세
 
-| 기능                 | HTTP Method       | URL                            |
-|--------------------|-------------------|--------------------------------|
-| 회원 가입              | POST              | /api/join                      |
-| 로그인                | GET               | /api/login                     |
-| 게시글 생성             | POST              | /api/boards                    |
-| 게시글 조회             | GET               | /api/boards                    |
-| 게시글 특정 게시글 조회      | GET               | /api/boards/{boardId}          |
-| 게시글 특정 게시글 수정      | PUT               | /api/board/{boardId}           |
-| 게시글 특정 게시글 삭제      | DELETE            | /api/board/{boardId}           |
+| 기능                 | HTTP Method       | URL                   |
+|--------------------|-------------------|-----------------------|
+| 회원 가입              | POST              | /api/members/signup   |
+| 로그인                | GET               | /api/members/login    |
+| 게시글 생성             | POST              | /api/boards           |
+| 게시글 조회             | GET               | /api/boards           |
+| 게시글 특정 게시글 조회      | GET               | /api/boards/{boardId} |
+| 게시글 특정 게시글 수정      | PUT               | /api/board/{boardId}  |
+| 게시글 특정 게시글 삭제      | DELETE            | /api/board/{boardId}  |
