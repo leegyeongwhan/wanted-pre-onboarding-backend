@@ -17,7 +17,6 @@ spring:
       on-profile: local
 logging.level:
   org.hibernate.SQL: debug
-  org.hibernate.type: trace
 
 ---
 spring:
@@ -34,4 +33,4 @@ spring:
       on-profile: prod
 logging.level:
   org.hibernate.SQL: debug
-  org.hibernate.type: trace
+#  org.hibernate.type: trace
