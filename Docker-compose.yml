@@ -1,0 +1,10 @@
+version: "3"
+services:
+  application:
+    build: .
+    image: gamja123/onboard
+    container_name: was-application
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
