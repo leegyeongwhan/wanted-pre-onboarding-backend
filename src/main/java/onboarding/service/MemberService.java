@@ -10,6 +10,7 @@ import onboarding.domain.Member;
 import onboarding.exception.DuplicateEmailException;
 import onboarding.exception.EmailNotFoundException;
 import onboarding.exception.NotAcceptPassword;
+import onboarding.exception.NotFoundMember;
 import onboarding.repository.MemberRepository;
 import onboarding.repository.MemberTokenRepository;
 import onboarding.security.JwtProvider;

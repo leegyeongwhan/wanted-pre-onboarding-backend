@@ -6,6 +6,7 @@ import onboarding.domain.Member;
 import onboarding.dto.BoardDetailResponse;
 import onboarding.dto.BoardListResponse;
 import onboarding.dto.request.BoardRegisterRequest;
+import onboarding.exception.NotFoundBoard;
 import onboarding.repository.BoardRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

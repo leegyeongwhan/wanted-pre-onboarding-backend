@@ -3,7 +3,7 @@ package onboarding.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import onboarding.service.BoardAccessException;
+import onboarding.exception.BoardAccessException;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
