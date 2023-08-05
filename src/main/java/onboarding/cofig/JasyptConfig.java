@@ -21,16 +21,6 @@ public class JasyptConfig {
         config.setPoolSize(1);
         encryptor.setConfig(config);
         return encryptor;
-    }
 
-    // 암호화 값 생성 및 확인 후 제거
-//    public static void main(String[] args) {
-//        StringEncryptor encryptor = new JasyptConfig().stringEncryptor("HelloWorld");
-//        System.out.println(encryptor.encrypt("jdbc:mysql://43.201.113.124:3306/board"));
-//        System.out.println(encryptor.encrypt("colt"));
-//        System.out.println(encryptor.encrypt("admin"));
-//        System.out.println(encryptor.encrypt("jdbc:mysql://admin.cknhjwsq0orm.ap-northeast-2.rds.amazonaws.com:3306/board"));
-//        System.out.println(encryptor.encrypt("admin"));
-//        System.out.println(encryptor.encrypt("gkskatl3104"));
-//    }
+    }
 }

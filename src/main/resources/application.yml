@@ -1,7 +1,3 @@
-#spring:
-#  profiles:
-#    active: local
-#---
 jasypt:
   secrete-key: ${JASYPT_SECRETE_KEY}
 
@@ -14,32 +10,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
-  config:
-    activate:
-      on-profile: local
 logging:
   level:
     org.hibernate.SQL: debug
 
 JWT_SECRET_KEY: key
-#---
-#jasypt:
-#  secrete-key: ${JASYPT_SECRETE_KEY}
-#
-#spring:
-#  datasource:
-#    url: ENC(aWZcT/yWiMQlGshksZnx/SibjHIjogK5csUD3FxWJRFXGgiQEDuZtPkcRxL+91wCCySqr8VG4kll/v3ZIA10o5cwFhGqs0XCtd+S7wjXe47sDvrgU6EjvA==)
-#    username: ENC(fMeARi67V2bjwVMTREy+Ww==)
-#    password: ENC(/MGRMQrvSFaaWzCR4hQJhzhY/g9zCglH)
-#  jpa:
-#    properties:
-#      hibernate:
-#        format_sql: true
-#  config:
-#    activate:
-#      on-profile: prod
-#logging:
-#  level:
-#    org.hibernate.SQL: debug
-#
-#JWT_SECRET_KEY: key
