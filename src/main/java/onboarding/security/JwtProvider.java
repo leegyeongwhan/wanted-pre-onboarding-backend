@@ -22,7 +22,7 @@ public class JwtProvider {
     private String secretKey;
 
     private static final long TOKEN_TIME = 10 * 24 * 60 * 60 * 1000L; // 10일의 밀리초
-    public static final String MEMBER_ID = "login";
+    public static final String MEMBER_ID = "loginId";
 
     @PostConstruct
     protected void init() {
@@ -31,7 +31,7 @@ public class JwtProvider {
 
     public String createToken(Long id) {
         Claims claims = Jwts.claims().setSubject(MEMBER_ID);
-        claims.put("loginId", id);
+        claims.put(MEMBER_ID, id);
         Date now = new Date();
 
         return Jwts.builder()

@@ -1,4 +1,4 @@
-package onboarding.controller;
+package onboarding.dto;
 
 import lombok.Getter;
 
