@@ -1,5 +1,6 @@
 package onboarding.controller;
 
+import onboarding.dto.LoginResponse;
 import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
 import lombok.RequiredArgsConstructor;

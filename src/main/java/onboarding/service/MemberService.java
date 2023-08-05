@@ -1,7 +1,7 @@
 package onboarding.service;
 
 import lombok.extern.slf4j.Slf4j;
-import onboarding.controller.LoginResponse;
+import onboarding.dto.LoginResponse;
 import onboarding.domain.MemberToken;
 import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import onboarding.domain.Member;
 import onboarding.exception.DuplicateEmailException;
 import onboarding.exception.EmailNotFoundException;
+import onboarding.exception.NotAcceptPassword;
 import onboarding.repository.MemberRepository;
 import onboarding.repository.MemberTokenRepository;
 import onboarding.security.JwtProvider;
@@ -52,6 +53,6 @@ public class MemberService {
     }
 
     public Member findMemberById(long memberId) {
-        return memberRepository.findById(memberId).orElseThrow();
+        return memberRepository.findById(memberId).orElseThrow(NotFoundMember::new);
     }
 }

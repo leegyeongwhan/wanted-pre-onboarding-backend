@@ -1,8 +1,8 @@
 package onboarding.service;
 
-import onboarding.controller.LoginResponse;
 import onboarding.domain.Member;
 import onboarding.domain.MemberToken;
+import onboarding.dto.LoginResponse;
 import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
 import onboarding.repository.MemberRepository;
@@ -24,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
-import static org.skyscreamer.jsonassert.JSONAssert.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class MemberServiceTest {

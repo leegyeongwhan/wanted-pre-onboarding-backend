@@ -1,5 +1,6 @@
 package onboarding.cofig;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
@@ -8,22 +9,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@EnableEncryptableProperties
 public class JasyptConfig {
 
-    @Value("${jasypt.encryptor.password}")
-    private String PASSWORD;
-
     @Bean("jasyptStringEncryptor")
-    public StringEncryptor stringEncryptor(){
+    public StringEncryptor stringEncryptor(@Value(value = "${jasypt.secrete-key}") String secreteKey) {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
-        config.setPassword(PASSWORD);
-        config.setPoolSize("1");
+        config.setPassword(secreteKey);
         config.setAlgorithm("PBEWithMD5AndDES");
-        config.setStringOutputType("base64");
-        config.setKeyObtentionIterations("1000");
-        config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");
+        config.setPoolSize(1);
         encryptor.setConfig(config);
         return encryptor;
+
     }
 }
