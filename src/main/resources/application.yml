@@ -1,13 +1,15 @@
-spring:
-  profiles:
-    active: prod  # 개발 환경에 따라 local 또는 prod로 변경
+#spring:
+#  profiles:
+#    active: local
+#---
+jasypt:
+  secrete-key: ${JASYPT_SECRETE_KEY}
 
----
 spring:
   datasource:
-    url: ENC(kG2t+OzSazC0wd3j4ZsfrlfIS/SLKiz1ZUmrG7D9oIbEdF3qrmVBw5n8YXTxVGtZ)
-    username: ENC(yTakvbGBJAuwXNWjLb7eVg==)
-    password: ENC(9GbAxtndVbKhOnZR1sOUuw==)
+    url: ENC(1GvVPrtIiBKK/IycsuvtpcMft/CYh5sYsPnYffz00u7oatcI4RRP2HAMsu34uZSp)
+    username: ENC(MNFOLjPUWV0YTn6kM/tvBQ==)
+    password: ENC(YpxgkiimilVr84gat/kiVQ==)
   jpa:
     properties:
       hibernate:
@@ -15,23 +17,29 @@ spring:
   config:
     activate:
       on-profile: local
-logging.level:
-  org.hibernate.SQL: debug
+logging:
+  level:
+    org.hibernate.SQL: debug
+
 JWT_SECRET_KEY: key
----
-spring:
-  datasource:
-    url: ENC(ByFEtmhhZcaelaV7PchRITLuEpprcXk+URWdTL1oSaGwiqBmmaviu6G5whE1axzPmcIIRIpnIk/b+KC0uNSaBgbxwixg6zGYOxWhUEdblPLa0Y7BetNikg==)
-    username: ENC(T9P4O/YNFhAcqkAxejjBIA==)
-    password: ENC(LdyBvCTtIkFPN3p7xcO3EK7oaibYTT76)
-  jpa:
-    properties:
-      hibernate:
-        format_sql: true
-  config:
-    activate:
-      on-profile: prod
-logging.level:
-  org.hibernate.SQL: debug
-JWT_SECRET_KEY: key
-#  org.hibernate.type: trace
+#---
+#jasypt:
+#  secrete-key: ${JASYPT_SECRETE_KEY}
+#
+#spring:
+#  datasource:
+#    url: ENC(aWZcT/yWiMQlGshksZnx/SibjHIjogK5csUD3FxWJRFXGgiQEDuZtPkcRxL+91wCCySqr8VG4kll/v3ZIA10o5cwFhGqs0XCtd+S7wjXe47sDvrgU6EjvA==)
+#    username: ENC(fMeARi67V2bjwVMTREy+Ww==)
+#    password: ENC(/MGRMQrvSFaaWzCR4hQJhzhY/g9zCglH)
+#  jpa:
+#    properties:
+#      hibernate:
+#        format_sql: true
+#  config:
+#    activate:
+#      on-profile: prod
+#logging:
+#  level:
+#    org.hibernate.SQL: debug
+#
+#JWT_SECRET_KEY: key

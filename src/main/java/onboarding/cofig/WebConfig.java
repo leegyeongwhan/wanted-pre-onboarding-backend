@@ -1,5 +1,6 @@
 package onboarding.cofig;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import lombok.RequiredArgsConstructor;
 import onboarding.security.LoginArgumentResolver;
 import onboarding.security.LoginInterceptor;
