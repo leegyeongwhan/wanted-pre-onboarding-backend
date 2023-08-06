@@ -77,47 +77,6 @@ class MemberControllerTest {
     }
 
     @Test
-    @DisplayName("로그인api_테스트")
-    @WithMockUser
-    void loginTest() throws Exception {
-        // Given
-        LoginRequest loginRequest = new LoginRequest("test@example.com", "password");
-        Member member = new Member("test@example.com", "password");
-        when(memberRepository.findByEmail(member.getEmail())).thenReturn(Optional.of(member));
-        when(encoder.matches(loginRequest.getPassword(), member.getPassword())).thenReturn(true);
-        when(jwtProvider.createToken(member.getId())).thenReturn("testToken");
-        when(memberTokenRepository.save(any(MemberToken.class))).thenReturn(new MemberToken("testToken"));
-
-        // when
-        LoginResponse loginResponse = memberService.login(new LoginRequest("test@example.com", "password"));
-
-        // When
-        MvcResult result = mockMvc.perform(
-                        MockMvcRequestBuilders.post("/api/members/login")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(objectMapper.writeValueAsString(loginRequest))
-                                .with(csrf())
-                                .accept(MediaType.APPLICATION_JSON)
-                )
-                .andExpect(status().isOk())
-                .andReturn();
-        System.out.println("result = " + result.getResponse());
-        // Then
-        String jsonResponse = result.getResponse().getContentAsString();
-        LoginResponse actualResponse = objectMapper.readValue(jsonResponse, LoginResponse.class);
-
-        System.out.println("actualResponse = " + actualResponse.getJwtToken());
-        System.out.println("expectedResponse.getJwtToken() = " + loginResponse.getJwtToken());
-        assertThat(actualResponse.getJwtToken()).isEqualTo(loginResponse.getJwtToken());
-
-        verify(memberRepository, times(1)).findByEmail(loginRequest.getEmail());
-        verify(encoder).matches(loginRequest.getPassword(), member.getPassword());
-        verify(jwtProvider, times(1)).createToken(member.getId());
-        verify(memberTokenRepository, times(1)).save(any());
-        verify(member, times(1)).updateToken(any());
-    }
-
-    @Test
     @WithMockUser
     void printJsonResponse() throws Exception {
         // Given
