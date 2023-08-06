@@ -26,7 +26,8 @@ public class BoardService {
     public Long register(BoardRegisterRequest boardRegisterRequest, long userId) {
         Member member = memberService.findMemberById(userId);
         Board board = boardRegisterRequest.toEntity(member);
-        return boardRepository.save(board).getId();
+        Board save = boardRepository.save(board);
+        return save.getId();
     }
 
     @Transactional(readOnly = true)
