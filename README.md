@@ -47,6 +47,7 @@ docker docker-compose up
 ![img_2.png](img_2.png)
 ### 
 # 구현 API 동작 데모 영상
+![시연 영상](https://github.com/leegyeongwhan/wanted-pre-onboarding-backend/assets/53938366/4f61bb8f-eab0-4eba-a8a9-9d62c7dc651d)
 # 구현 방법 & 이유
 처음에는 password 테이블을 따로 두는 방향으로 선택하다(회원과 비밀번호는 별개의 것으로 처음에 생각했고
 보안 상으로도 각 테이블을 따로 두는것이 좋다고 생각했습니다.) password는 member테이블의 필드로
