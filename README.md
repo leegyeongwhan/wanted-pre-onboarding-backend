@@ -23,6 +23,42 @@ docker pull gamja123/boards
 docker docker-compose up
 ```
 
+```yaml
+jasypt:
+  secrete-key: ${JASYPT_SECRETE_KEY}
+
+spring:
+  datasource:
+    url: ENC(EmeVnqtrE5v/z62gMr3e4dSgo/MC+l+vtxUvgAslWzHFXcpcjfq9+HjFviknx28QFwTMMFB3qA8A6wQhMy2HIL8ZaUkznGsZM3hoduguZ2Co/nmW+fVA/A==)
+    username: ENC(Dit6IbTLxXkWioBnMyzXZg==)
+    password: ENC(ZDsXnXm+P/4m0UfT/E0XEb9YRLIk2u3y)
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+JWT_SECRET_KEY: key
+```
+``` dockerfile
+version: "3"
+services:
+  application:
+    build: .
+    image: gamja123/boards
+    container_name: was-application
+    ports:
+      - "8080:8080"
+    environment:
+      - JASYPT_SECRETE_KEY=암호
+    restart: on-failure
+```
+
+url, username,password 항목에 자신의 mysql 정보를 넣어둔다. environment의
+JASYPT_SECRETE_KEY= 이곳에 자신이 사용할 암호를 넣어 암호화를 하여 사용한다.
+
 # DB 테이블 구조
 ## 요구사항
 ### [사용자,회원]
