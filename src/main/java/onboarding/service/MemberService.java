@@ -31,7 +31,7 @@ public class MemberService {
     @Transactional
     public Long signup(SignUpRequest signUpRequest) {
         validateEmail(signUpRequest);
-        Member member = new Member(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        Member member = new Member(signUpRequest.getEmail(), signUpRequest.getPassword());
         return memberRepository.save(member).getId();
     }
 

@@ -42,26 +42,11 @@ class MemberServiceTest {
     private JwtProvider jwtProvider;
 
     @Test
-    @DisplayName("비밀번호_암호화")
-    void test_encoder() {
-        //given
-        SignUpRequest signUpRequest = new SignUpRequest("example123@naver.com", "password123");
-        Member savedMember = new Member(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
-
-        // when
-        String encode = encoder.encode(signUpRequest.getPassword());
-
-        // then
-        assertEquals(encode, savedMember.getPassword());
-    }
-
-
-    @Test
     @DisplayName("회원가입 성공 테스트")
-    void test_signup() {
+    void testSignup() {
         //given
         SignUpRequest signUpRequest = new SignUpRequest("example123@naver.com", "password123");
-        Member savedMember = new Member(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        Member savedMember = new Member(signUpRequest.getEmail(),signUpRequest.getPassword());
         when(memberRepository.existsByEmail(signUpRequest.getEmail())).thenReturn(false);
         when(memberRepository.save(any(Member.class))).thenReturn(savedMember);
 
@@ -76,7 +61,7 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("회원가입_이메일중복")
-    void test_login() {
+    void testLogin() {
         // given
         SignUpRequest signUpRequest = new SignUpRequest("test@example.com", "password");
         when(memberRepository.existsByEmail(signUpRequest.getEmail())).thenReturn(true);
@@ -89,11 +74,11 @@ class MemberServiceTest {
 
     @Test
     @DisplayName("로그인 성공테스트")
-    void login_success() {
+    void loginSuccess() {
 
         //given
         LoginRequest loginRequest = new LoginRequest("test@example.com", "password");
-        Member member = new Member("test@example.com", encoder.encode("password"));
+        Member member = new Member("test@example.com", "password");
         when(memberRepository.findByEmail(member.getEmail())).thenReturn(Optional.of(member));
         when(encoder.matches(loginRequest.getPassword(), member.getPassword())).thenReturn(true);
         when(jwtProvider.createToken(member.getId())).thenReturn("testToken");
@@ -129,7 +114,7 @@ class MemberServiceTest {
     void testNotAcceptPassword() {
         String email = "test@example.com";
         String password = encoder.encode("password");
-        Member member = new Member(email, encoder.encode("wrongPassword"));
+        Member member = new Member(email, "wrongPassword");
         when(memberRepository.findByEmail(email)).thenReturn(Optional.of(member));
         when(encoder.matches(password, member.getPassword())).thenReturn(false);
 
