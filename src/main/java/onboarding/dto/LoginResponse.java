@@ -2,7 +2,6 @@ package onboarding.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 public class LoginResponse {

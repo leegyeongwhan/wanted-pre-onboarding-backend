@@ -1,8 +1,6 @@
 package onboarding.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import onboarding.domain.Member;
-import onboarding.domain.MemberToken;
 import onboarding.dto.LoginResponse;
 import onboarding.dto.request.LoginRequest;
 import onboarding.dto.request.SignUpRequest;
@@ -27,10 +25,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import java.util.Optional;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -81,7 +77,7 @@ class MemberControllerTest {
     void printJsonResponse() throws Exception {
         // Given
         LoginRequest loginRequest = new LoginRequest("example123@naver.com", "password123");
-        LoginResponse loginResponse = LoginResponse.of("dummyJwtToken"); // 예상되는 반환값
+        LoginResponse loginResponse = LoginResponse.of("fdsfffdsfds"); // 예상되는 반환값
         when(memberService.login(any(LoginRequest.class))).thenReturn(loginResponse);
 
         LoginResponse loginResponse2 = memberService.login(new LoginRequest("example123@naver.com", "password123"));
