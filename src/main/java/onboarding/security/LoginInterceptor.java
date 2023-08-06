@@ -38,7 +38,6 @@ public class LoginInterceptor implements HandlerInterceptor {
                 request.setAttribute(USER_ID, userId);
                 log.debug("토큰으로 부터 받아온 userId = {}", userId);
                 request.setAttribute(USER_ID, userId);
-
             }
         }
 
