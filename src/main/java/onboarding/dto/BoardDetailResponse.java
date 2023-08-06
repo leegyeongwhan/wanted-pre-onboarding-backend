@@ -8,15 +8,17 @@ import onboarding.domain.Board;
 @NoArgsConstructor
 public class BoardDetailResponse {
 
+    private Long id;
     private String title;
     private String content;
 
-    private BoardDetailResponse(String title, String content) {
+    public BoardDetailResponse(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }
 
     public static BoardDetailResponse from(Board board) {
-        return new BoardDetailResponse(board.getTitle(), board.getContent());
+        return new BoardDetailResponse(board.getId(), board.getTitle(), board.getContent());
     }
 }
