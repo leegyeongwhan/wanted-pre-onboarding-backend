@@ -2,9 +2,10 @@ version: "3"
 services:
   application:
     build: .
-    image: gamja123/onboard
+    image: gamja123/boards
     container_name: was-application
     ports:
-      - 8080:8080
+      - "8080:8080"
     environment:
-      SPRING_PROFILES_ACTIVE: prod
+      - JASYPT_SECRETE_KEY=HelloWorld
+    restart: on-failure
