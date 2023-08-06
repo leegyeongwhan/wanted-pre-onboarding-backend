@@ -10,6 +10,7 @@ import onboarding.domain.Member;
 import onboarding.exception.DuplicateEmailException;
 import onboarding.exception.EmailNotFoundException;
 import onboarding.exception.NotAcceptPassword;
+import onboarding.exception.NotFoundMember;
 import onboarding.repository.MemberRepository;
 import onboarding.repository.MemberTokenRepository;
 import onboarding.security.JwtProvider;
@@ -30,7 +31,7 @@ public class MemberService {
     @Transactional
     public Long signup(SignUpRequest signUpRequest) {
         validateEmail(signUpRequest);
-        Member member = new Member(signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+        Member member = new Member(signUpRequest.getEmail(), signUpRequest.getPassword());
         return memberRepository.save(member).getId();
     }
 

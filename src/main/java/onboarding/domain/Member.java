@@ -3,11 +3,14 @@ package onboarding.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
@@ -25,10 +28,15 @@ public class Member {
 
     public Member(String email, String password) {
         this.email = email;
-        this.password = password;
+        this.password = bCryptPasswordEncoder(password);
     }
 
     public void updateToken(MemberToken memberToken) {
         this.memberToken = memberToken;
+    }
+
+    private String bCryptPasswordEncoder(String password) {
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        return bCryptPasswordEncoder.encode(password);
     }
 }

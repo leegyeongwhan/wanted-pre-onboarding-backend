@@ -9,6 +9,8 @@ import onboarding.security.LoginCheck;
 import onboarding.security.LoginValue;
 import onboarding.service.BoardService;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +33,7 @@ public class BoardController {
 
     @LoginCheck
     @GetMapping
-    public ResponseEntity<BoardListResponse> read(Pageable pageable) {
+    public ResponseEntity<BoardListResponse> read(@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         return ResponseEntity.ok().body(boardService.read(pageable));
     }
 
@@ -54,7 +56,7 @@ public class BoardController {
     @DeleteMapping("/{boardId}")
     public ResponseEntity<Void> delete(@LoginValue long userId,
                                        @PathVariable long boardId) {
-        boardService.delete(userId,boardId);
+        boardService.delete(userId, boardId);
         return ResponseEntity.ok().build();
     }
 }

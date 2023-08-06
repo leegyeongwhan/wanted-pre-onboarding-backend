@@ -1,4 +1,4 @@
-package onboarding.service;
+package onboarding.exception;
 
 public class BoardAccessException extends RuntimeException {
 

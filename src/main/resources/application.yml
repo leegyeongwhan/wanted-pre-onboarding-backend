@@ -3,9 +3,9 @@ jasypt:
 
 spring:
   datasource:
-    url: ENC(1GvVPrtIiBKK/IycsuvtpcMft/CYh5sYsPnYffz00u7oatcI4RRP2HAMsu34uZSp)
-    username: ENC(MNFOLjPUWV0YTn6kM/tvBQ==)
-    password: ENC(YpxgkiimilVr84gat/kiVQ==)
+    url: ENC(EmeVnqtrE5v/z62gMr3e4dSgo/MC+l+vtxUvgAslWzHFXcpcjfq9+HjFviknx28QFwTMMFB3qA8A6wQhMy2HIL8ZaUkznGsZM3hoduguZ2Co/nmW+fVA/A==)
+    username: ENC(Dit6IbTLxXkWioBnMyzXZg==)
+    password: ENC(ZDsXnXm+P/4m0UfT/E0XEb9YRLIk2u3y)
   jpa:
     properties:
       hibernate:
