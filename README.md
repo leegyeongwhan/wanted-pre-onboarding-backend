@@ -2,7 +2,7 @@
 # 이름: 이경환
 # 애플리케이션 실행 방법
 ```aidl
-43.200.111.127:8080  ip에 접속하여 명세서에있는 api 호출
+43.200.111.127:8080  //ip에 접속하여 명세서에있는 api 호출
 ```
 
 ```aidl
@@ -47,7 +47,7 @@ docker docker-compose up
 ![img_2.png](img_2.png)
 ### 
 # 구현 API 동작 데모 영상
-![시연 영상](https://github.com/leegyeongwhan/wanted-pre-onboarding-backend/assets/53938366/4f61bb8f-eab0-4eba-a8a9-9d62c7dc651d)
+![시연 영상](https://github.com/leegyeongwhan/wanted-pre-onboarding-backend/assets/53938366/c6927828-3946-4fc6-a330-8992375a9ad0)
 # 구현 방법 & 이유
 처음에는 password 테이블을 따로 두는 방향으로 선택하다(회원과 비밀번호는 별개의 것으로 처음에 생각했고
 보안 상으로도 각 테이블을 따로 두는것이 좋다고 생각했습니다.) password는 member테이블의 필드로
@@ -70,7 +70,7 @@ yml을 그대로 push할경우 노출될 위험이 있다는 생각이들어 jas
 
 mok을 활용해 단위테스트를 하였습니다.
 
-```aidl
+``` dockerfile
 version: "3"
 services:
   application:
@@ -105,7 +105,8 @@ docker docker-compose up
 | 게시글 특정 게시글 수정      | PUT               | /api/board/{boardId}  |
 | 게시글 특정 게시글 삭제      | DELETE            | /api/board/{boardId}  |
 
-    회원가입
+- 회원가입
+
 Request(requestBody)
 ```json 
 
@@ -123,7 +124,8 @@ Response
 ```
 
 
-    로그인
+- 로그인
+
 Request(requestBody)
 ```json 
 
@@ -133,16 +135,17 @@ Request(requestBody)
 }
 ```
 
-    Response
+Response
 ```json 
 
 {
     "jwtToken": "eyJhbGciOiJIUzI1Ni"
 }
 ```
-///////
+/////// 게시글
 
-    게시글 생성
+- 게시글 생성
+
 Request(requestBody)
 ```json 
 
@@ -152,16 +155,18 @@ Request(requestBody)
 }
 
 ```
+
 Response
 ```json 
 
 {
   1
 }
+```
 
+- 게시글 전체 조회
 
-    게시글 전체 조회
-Reponse
+Response
 ```json 
 
 {
@@ -174,7 +179,7 @@ Reponse
 }
 ```
 
-    게시글 특정 게시글 조회
+- 게시글 특정 게시글 조회
 
 Response
 ```json 
@@ -184,7 +189,8 @@ Response
     "content": "새로운 게시글 내용"
 }
 ```
-    게시글 특정 게시글 수정
+- 게시글 특정 게시글 수정
+
 Request(requestBody)
 ```json 
 
@@ -202,7 +208,7 @@ Response
 }
 ```
 
-    게시글 특정 게시글 삭제
+- 게시글 특정 게시글 삭제
 Response
 ```json 
 
